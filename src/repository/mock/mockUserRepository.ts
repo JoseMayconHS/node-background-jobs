@@ -1,7 +1,7 @@
 import { UserRepository, UserRepositoryCreateData } from "../UserRepository";
 
 export class MockUserRepository implements UserRepository {
-  create(data: UserRepositoryCreateData): Promise<void> {
-    return Promise.resolve()
+  async create(data: UserRepositoryCreateData): Promise<void> {
+    console.log('Usuário criado - ', data.name)
   }
 }

@@ -5,20 +5,23 @@ services:
     build: .
     ports:
       - 3000:3000
-    command: >
-        yarn build && yarn start
+    command: yarn docker
     volumes:
-      - ./dist:/usr/app/dist
+      - .:/usr/app
     networks:
       - net
     depends_on:
-      - redis
-  redis:
+      - inmemory
+
+  inmemory:
     image: redis:7-alpine
+    command: redis-server --include /usr/local/etc/redis/redis.conf
     ports:
       - 6379:6379
     networks:
       - net
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
 
 networks:
   net:

@@ -5,11 +5,14 @@ describe('User Register', () => {
 
     const userRepositoryCreateSpy = jest.fn()
     const mailLibCreateSpy = jest.fn()
+    const inMemoryLibSetItemSpy = jest.fn()
 
     const useCaseUserRegister = new UseCaseUserRegister({
       create: userRepositoryCreateSpy
     }, {
-      sendMail:mailLibCreateSpy
+      sendMail: mailLibCreateSpy
+    }, {
+      setItem: inMemoryLibSetItemSpy
     })
 
     await expect(useCaseUserRegister.execute({
@@ -22,6 +25,7 @@ describe('User Register', () => {
 
     expect(userRepositoryCreateSpy).toBeCalled()
     expect(mailLibCreateSpy).toBeCalled()
+    expect(inMemoryLibSetItemSpy).toBeCalled()
   })
 
   it('should not be able register user', async () => {
@@ -29,6 +33,8 @@ describe('User Register', () => {
       async create() { }
     }, {
       async sendMail() {}
+    }, {
+      async setItem() {}
     })
 
     await expect(useCaseUserRegister.execute({

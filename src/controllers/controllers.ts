@@ -2,7 +2,7 @@ import { Application } from "express";
 import { controls } from "./controls";
 import { middleware } from "./middleware";
 
-export const controllers = (app: Application) => {
+export const controllers = async (app: Application) => {
 
   middleware(app)
 
