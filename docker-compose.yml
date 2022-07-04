@@ -5,7 +5,7 @@ services:
     build: .
     ports:
       - 3000:3000
-    command: yarn docker
+    command: yarn docker:start
     volumes:
       - .:/usr/app
     networks:

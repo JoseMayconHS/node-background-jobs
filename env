@@ -1,0 +1,13 @@
+module.exports = {
+  MAIL_HOST: '',
+  MAIL_PORT: 0,
+  MAIL_USER: '',
+  MAIL_PASS: '',
+
+  REDIS_HOST: '',
+  REDIS_PORT: 0,
+  REDIS_USER: '',
+  REDIS_PASS: '',
+
+  PORT: 0
+}
