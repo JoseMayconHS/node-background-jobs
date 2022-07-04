@@ -4,9 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only src/server.ts",
+    "dev:server": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only src/server.ts",
+    "dev:queue": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only src/queue.ts",
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
-    "start": "node dist/server.js",
+    "prod:server": "node dist/server.js",
+    "prod:queue": "node dist/queue.js",
     "docker": "yarn build && yarn start",
     "test": "jest"
   },

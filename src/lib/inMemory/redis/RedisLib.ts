@@ -2,7 +2,7 @@ import Redis, { RedisOptions } from 'ioredis'
 
 import { InMemoryLib, SetItemData } from "../InMemoryLib"
 
-const redisConfig: RedisOptions = {
+export const redisConfig: RedisOptions = {
   host: process.env.REDIS_HOST,
   port: +process.env.REDIS_PORT,
   username: process.env.REDIS_USER,
