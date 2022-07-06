@@ -1,3 +1,3 @@
-import { queueService } from "@services/queue";
+import { queueService } from '@services/queue'
 
 queueService.processQueue()

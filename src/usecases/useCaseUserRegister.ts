@@ -1,31 +1,31 @@
-import { UserRepository, UserRepositoryCreateData } from '@repository/UserRepository';
-import { QueueLib } from '@lib/queue/QueueLib';
+import { QueueLib } from '@lib/queue/QueueLib'
+import {
+	UserRepository,
+	UserRepositoryCreateData,
+} from '@repositories/UserRepository'
 
 interface ExecuteData {
-  user: UserRepositoryCreateData
+	user: UserRepositoryCreateData
 }
 
 export class UseCaseUserRegister {
-  constructor(
-    private userRepository: UserRepository,
-    private libQueue: QueueLib
-  ) {}
+	constructor(
+		private userRepository: UserRepository,
+		private libQueue: QueueLib
+	) {}
 
-  async execute(data: ExecuteData): Promise<void> {
-    const { user } = data
+	async execute(data: ExecuteData): Promise<void> {
+		const { user } = data
 
-    if (!user.email || !user.name) {
-      throw new Error('Email ou nome estão ausentes')
-    }
+		if (!user.email || !user.name) {
+			throw new Error('Email ou nome estão ausentes')
+		}
 
-    await this.userRepository.create(user)
+		await this.userRepository.create(user)
 
-    await this.libQueue.mail.queue.add({
-      subject: 'Novo Usuário !!',
-      body: [
-        `<p>Nome: ${ user.name }</p>`,
-        `<p>E-mail: ${ user.email }</p>`,
-      ]
-    })
-  }
+		await this.libQueue.mail.queue.add({
+			subject: 'Novo Usuário !!',
+			body: [`<p>Nome: ${user.name}</p>`, `<p>E-mail: ${user.email}</p>`],
+		})
+	}
 }

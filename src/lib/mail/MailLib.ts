@@ -1,8 +1,8 @@
 export interface LibMailConfig {
-  subject: string,
-  body: string[]
+	subject: string
+	body: string[]
 }
 
 export interface LibMail {
-  sendMail(config: LibMailConfig): Promise<void>
+	sendMail(config: LibMailConfig): Promise<void>
 }
