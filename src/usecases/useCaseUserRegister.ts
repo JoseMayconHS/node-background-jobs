@@ -2,7 +2,7 @@ import { QueueLib } from '@lib/queue/QueueLib'
 import {
 	UserRepository,
 	UserRepositoryCreateData,
-} from '@repositories/UserRepository'
+} from '@repositories/userRepository/UserRepositoryTypes'
 
 interface ExecuteData {
 	user: UserRepositoryCreateData

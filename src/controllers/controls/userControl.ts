@@ -1,6 +1,6 @@
 import { Application, Request, Response } from 'express'
 
-import { MockUserRepository } from '@repositories/mock/mockUserRepository'
+import { UserRepository } from '@repositories/userRepository'
 import { queueService } from '@services/queue'
 import { UseCaseUserRegister } from '@usecases/useCaseUserRegister'
 
@@ -13,7 +13,7 @@ const store = async (req: Request, res: Response) => {
 
 		const { name, email } = req.body as Body
 
-		const userRepository = new MockUserRepository()
+		const userRepository = new UserRepository()
 
 		const useCaseUserRegister = new UseCaseUserRegister(
 			userRepository,

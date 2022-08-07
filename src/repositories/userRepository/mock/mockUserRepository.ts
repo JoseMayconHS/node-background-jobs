@@ -1,4 +1,7 @@
-import { UserRepository, UserRepositoryCreateData } from '../UserRepository'
+import {
+	UserRepository,
+	UserRepositoryCreateData,
+} from '../UserRepositoryTypes'
 
 export class MockUserRepository implements UserRepository {
 	async create(data: UserRepositoryCreateData): Promise<void> {
